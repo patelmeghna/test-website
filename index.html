@@ -983,7 +983,11 @@
         const subject = (inputs.elements["subject"].value).trim()
         // const phone = (inputs.elements["phone"].value).trim()
         if (!name.length > 0 || !email.length > 0 || !msg.length > 0 || !subject.length > 0) {
-            alert("All fields are mandatory")
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'All fields are mandatory',
+                })
             return
         }
         Email.send({
@@ -1025,7 +1029,11 @@
         const time = (inputBooking.elements["time"].value).trim()
         const people = (inputBooking.elements["people"].value).trim()
         if (!name.length > 0 || !email.length > 0 || !phone.length > 0 || !date.length > 0 || !time.length > 0 || !people.length > 0 ) {
-            alert("All fields are mandatory")
+          Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'All fields are mandatory',
+                })
             return
         }
         Email.send({
