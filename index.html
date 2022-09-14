@@ -850,7 +850,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <!-- <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form onsubmit="return false" id="contact-form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -870,10 +870,10 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit" class="submit-btn">Send Message</button></div>
-            </form> -->
+              <div class="text-center"><button type="submit" id="contact-btn">Send Message</button></div>
+            </form>
 
-            <form onsubmit="return false" id="contact-form">
+            <!-- <form onsubmit="return false" id="contact-form">
               <div class="form-item">
                   <label for="">Name: </label><br>
                   <input type="text" name="name" placeholder="Name" required>
@@ -893,7 +893,7 @@
               </div>
               <button id="contact-btn">Send Email</button>
   
-          </form>
+          </form> -->
 
           </div>
 
@@ -1001,8 +1001,9 @@
         const name = (inputs.elements["name"].value).trim()
         const email = (inputs.elements["email"].value).trim()
         const msg = (inputs.elements["message"].value.trim())
-        const phone = (inputs.elements["phone"].value).trim()
-        if (!name.length > 0 || !email.length > 0 || !msg.length > 0 || !phone.length > 0) {
+        const subject = (inputs.elements["subject"].value).trim()
+        // const phone = (inputs.elements["phone"].value).trim()
+        if (!name.length > 0 || !email.length > 0 || !msg.length > 0 || !subject.length > 0) {
             alert("All fields are mandatory")
             return
         }
@@ -1012,8 +1013,8 @@
             Password: "43FEA81720DE6D3D59BEBF24182B86B83605",
             To: "patelmeghna2710@gmail.com",
             From: email,
-            Subject: "Contact Us Query By the Customer",
-            Body: msg + "<br>" + name + "<br>" + phone
+            Subject: subject,
+            Body: msg + "<br>" + name + "<br>" + email
         }).then(msg => alert(msg))
     })
   </script>
