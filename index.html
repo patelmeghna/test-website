@@ -551,7 +551,7 @@
           </div>
           <div class="mb-3">
             <div class="loading">Loading</div>
-            <div class="error-message"></div>
+            <!-- <div class="error-message"></div> -->
             <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
           </div>
           <div class="text-center"><button id="booking-btn">Book a Table</button></div>
@@ -1024,7 +1024,7 @@
             To: "patelmeghna2710@gmail.com",
             From: email,
             Subject: "New booking from website",
-            Body: "<p>Customer Name: </p>" + name + "<br>" + "<p>Customer Contact: </p>" + phone + "<br>" + "<p>Date Of Booking: </p>" + date + "<br>" + "<p>Booking Time: </p>" + time + "<br>" + "<p>Number of Customers: </p>"  + people + "<br>" + "<p>Special Message</p>" + msg
+            Body: "<span style='font-weight: bold;'>Customer Name: </span>" + name + "<br>" + "<span style='font-weight: bold;'>Customer Contact: </span>" + phone + "<br>" + "<span style='font-weight: bold;'>Date Of Booking: </span>" + date + "<br>" + "<span style='font-weight: bold;'>Booking Time: </span>" + time + "<br>" + "<span style='font-weight: bold;'>Number of Customers: </span>"  + people + "<br>" + "<span style='font-weight: bold;'>Special Message</span>" + msg
         }).then(msg => alert(msg))
     })
   </script>
