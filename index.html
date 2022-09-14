@@ -851,7 +851,7 @@
           <div class="col-lg-8 mt-5 mt-lg-0">
 
             <!-- <form action="forms/contact.php" method="post" role="form" class="php-email-form"> -->
-              <form onsubmit="sendMail(); reset(); return false;" class="php-email-form">
+              <form onsubmit="return false" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -871,7 +871,7 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit" class="submit-btn">Send Message</button></div>
             </form>
 
           </div>
@@ -973,25 +973,28 @@
   <script src="https://smtpjs.com/v3/smtp.js"></script>
 
   <script>
-    function sendMail() {
-      const name = (inputs.elements["name"].value).trim()
-    const email = (inputs.elements["email"].value).trim()
-    const msg = (inputs.elements["message"].value.trim())
-    const phone = (inputs.elements["phone"].value).trim()
-    if (!name.length > 0 || !email.length > 0 || !msg.length > 0 || !phone.length > 0) {
-        alert("All fields are mandatory")
-        return
-    }
-    Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "meghnakidiya@gmail.com",
-        Password: "78D83DB3754622B7DDA0C50F024209AFFC4E",
-        To: "patelmeghna2710@gmail.com",
-        From: email,
-        Subject: "Contact Us Query By the Customer",
-        Body: msg + "<br>" + name + "<br>" + phone
-    }).then(msg => alert(msg))
-    }
+    const btn = document.getElementsByClassName('submit-btn')
+    const inputs = document.querySelector('form')
+    btn.addEventListener('click', () => {
+
+        const name = (inputs.elements["name"].value).trim()
+        const email = (inputs.elements["email"].value).trim()
+        const msg = (inputs.elements["message"].value.trim())
+        const phone = (inputs.elements["subject"].value).trim()
+        if (!name.length > 0 || !email.length > 0 || !msg.length > 0 || !phone.length > 0) {
+            alert("All fields are mandatory")
+            return
+        }
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "meghnakidiya@gmail.com",
+            Password: "78D83DB3754622B7DDA0C50F024209AFFC4E",
+            To: "patelmeghna2710@gmail.com",
+            From: email,
+            Subject: "Contact Us Query By the Customer",
+            Body: msg + "<br>" + name + "<br>" + phone
+        }).then(msg => alert(msg))
+    })
   </script>
 
 </body>
