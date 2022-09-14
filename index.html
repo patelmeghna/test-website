@@ -974,17 +974,23 @@
 
   <script>
     function sendMail() {
-      Email.send({
-          Host : "smtp.elasticemail.com",
-          Username : "meghnakidiya@gmail.com",
-          Password : "24E28FDA6DB517068AAEB3047D3D8C2F85BE",
-          To : 'meghnakidiya29@gmail.com',
-          From : document.getElementById("email").value,
-          Subject : "New contact submission from website",
-          Body : "And this is the body"
-      }).then(
-        message => alert(message)
-      );
+      const name = (inputs.elements["name"].value).trim()
+    const email = (inputs.elements["email"].value).trim()
+    const msg = (inputs.elements["message"].value.trim())
+    const phone = (inputs.elements["phone"].value).trim()
+    if (!name.length > 0 || !email.length > 0 || !msg.length > 0 || !phone.length > 0) {
+        alert("All fields are mandatory")
+        return
+    }
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "meghnakidiya@gmail.com",
+        Password: "78D83DB3754622B7DDA0C50F024209AFFC4E",
+        To: "patelmeghna2710@gmail.com",
+        From: email,
+        Subject: "Contact Us Query By the Customer",
+        Body: msg + "<br>" + name + "<br>" + phone
+    }).then(msg => alert(msg))
     }
   </script>
 
