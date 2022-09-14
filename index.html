@@ -850,7 +850,8 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <!-- <form action="forms/contact.php" method="post" role="form" class="php-email-form"> -->
+              <form onsubmit="sendMail(); reset(); return false;">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -969,6 +970,23 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script>
+    function sendMail() {
+      Email.send({
+          Host : "smtp.gmail.com",
+          Username : "meghnakidiya29@gmail.com",
+          Password : "meghna2129",
+          To : 'meghnakidiya29@gmail.com',
+          From : document.getElementById("email").value,
+          Subject : "New contact submission from website",
+          Body : "And this is the body"
+      }).then(
+        message => alert(message)
+      );
+    }
+  </script>
 
 </body>
 
